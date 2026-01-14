@@ -102,7 +102,7 @@ abstract class Data_Sync {
 
 		// hrtime returns nanoseconds. That's pretty hardcore. Since we're a relaxed bunch, let's convert to microseconds instead.
 		$time_elapsed_in_microseconds  = round( ( hrtime( true ) - $start_time ) / 1000 );
-		$time_to_sleep_in_microseconds = int( ( 60 / $requests_per_minute * $concurrent_batches * 1000000 ) - $time_elapsed_in_microseconds );
+		$time_to_sleep_in_microseconds = (int)( ( 60 / $requests_per_minute * $concurrent_batches * 1000000 ) - $time_elapsed_in_microseconds );
 		if ( $time_to_sleep_in_microseconds > 0 ) {
 			// Go to sleep
 			usleep( $time_to_sleep_in_microseconds );
